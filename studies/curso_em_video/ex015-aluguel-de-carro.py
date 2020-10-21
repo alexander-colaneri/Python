@@ -1,0 +1,8 @@
+print()
+print('*'*5, 'Cálculo de preço de aluguel de carro', '*'*5)
+print()
+d = int(input('Digite a quantidade de dias de aluguel: '))
+km = float(input('Digite a quantidade de kilômetros rodados: '))
+p = (60 * d) + (km * 0.15)
+print()
+print(f'* Valor a ser pago por {d} dias de aluguel e {km:.2f}Km rodados: R${p:.2f} *')
