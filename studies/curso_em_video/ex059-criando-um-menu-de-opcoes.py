@@ -1,4 +1,5 @@
 class Calculadora():
+    '''Calcula números inseridos, de acordo com opções dadas.'''
 
     def __init__(self):
         self.x = 0
