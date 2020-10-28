@@ -1,3 +1,19 @@
+from random import shuffle
+
+def ordenar_alunos():
+    ''' Ordem de apresentação de alunos.'''
+    print('Ordem de apresentação de alunos:\n')
+    alunos = [input('Estudante: ') for a in range(4)]
+    shuffle(alunos)
+    ordem = ', '.join(alunos)
+    print('\nA ordem de apresentação é:', ordem)
+
+ordenar_alunos()
+
+
+""" 
+Versão anterior:
+
 print()
 print('* Seleção da ordem de apresentação de alunos em aula *')
 print()
@@ -13,4 +29,4 @@ print(f'A ordem de apresentação será: {lista}.')
 from random import shuffle
 
 shuffle(lista)
-print(lista)
+print(lista) """
