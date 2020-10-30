@@ -1,49 +1,69 @@
 # Crie um programa que faça o computador jogar Jokenpô com você.
-print()
-print(f'{" JoKemPô ":*^36}')
-print()
-print('''Bem-vindo ao jogo! Abaixo as opções para jogar!
-[ 0 ] - PEDRA
-[ 1 ] - PAPEL
-[ 2 ] - TESOURA''')
-escolha = int(input('Digite o número da sua escolha: '))
-from random import randint
+
+from random import choice
 from time import sleep
 
-sleep(0.5)
-print('*JO*')
-sleep(0.5)
-print('*KEM*')
-sleep(0.5)
-print('*PÔ!!!*')
-print()
-itens = ('PEDRA', 'PAPEL', 'TESOURA')
-comp = randint(0, 2)
-if escolha >= 3:
-    print('Opção inválida, tente novamente!')
+class JoKenPo():
+    opcoes = ('PEDRA', 'PAPEL', 'TESOURA')
+    menu = '''\nEscolha uma opção:
+    [ 1 ] PEDRA
+    [ 2 ] PAPEL
+    [ 3 ] TESOURA\n'''
 
-elif escolha == comp:
-    print(f'=== Você jogou {itens[escolha]} e o computador {itens[comp]} ===!')
-    print(f'{" EMPATE! Jogue novamente! ":*^40}')
+    def __init__(self):
+        self.opcao_jogador = '' 
+        self.opcao_cpu = ''
 
-elif comp == 0 and escolha == 2:
-    print(f'=== Você jogou {itens[escolha]} e o computador {itens[comp]} ===!')
-    print(f'{" PERDEU! Jogue novamente! ":*^40}')
+    def iniciar(self):
+        '''Menu principal'''
+        print(f'{" JO KEN PO ":*^40}')
+        print(jokenpo.menu)
+        if not self.receber_entrada_jogador():
+            print('Opção Inválida. Comece novamente!')
+        else:
+            self.receber_entrada_cpu()
+            self.fazer_contagem_regressiva()
+            self.analisar_resultados()
 
-elif comp == 2 and escolha == 1:
-    print(f'=== Você jogou {itens[escolha]} e o computador {itens[comp]}! ===')
-    print(f'{" PERDEU! Jogue novamente! ":*^40}')
+    def receber_entrada_jogador(self):
+        '''Recebimento da opção do jogador.'''
+        jogador = input()
+        if jogador == '1':
+            self.opcao_jogador = jokenpo.opcoes[0]
+            return self.opcao_jogador
+        elif jogador == '2':
+            self.opcao_jogador = jokenpo.opcoes[1]
+            return self.opcao_jogador
+        elif jogador == '3':
+            self.opcao_jogador = jokenpo.opcoes[2]
+            return self.opcao_jogador
+        else:
+            return False
+        
+    def receber_entrada_cpu(self):
+        '''Recebimento da opção do CPU.'''
+        self.opcao_cpu = choice(jokenpo.opcoes)
+        return self.opcao_cpu
 
-elif comp == 1 and escolha == 0:
-    print(f'=== Você jogou {itens[escolha]} e o computador {itens[comp]}! ===')
-    print(f'{" PERDEU! Jogue novamente! ":*^40}')
+    def analisar_resultados(self):
+        '''Comparação entre resultados e indicação do vencedor.'''
+        jogador = self.opcao_jogador
+        cpu = self.opcao_cpu
+        if jogador == cpu:
+            print(f'Você escolheu {jogador} e o computador {cpu}.\n***** Empate! *****\n')
+        elif (jogador == 'PEDRA' and cpu == 'TESOURA') or (jogador == 'PAPEL' and cpu == 'PEDRA') or (jogador == 'TESOURA'  and cpu == 'PAPEL'):
+            print(f'Você escolheu {jogador} e o computador {cpu}.\n***** Você venceu! *****\n')
+        else:
+            print(f'Você escolheu {jogador} e o computador {cpu}.\n***** Você perdeu! *****\n')
 
-else:
-    print(f'=== Você jogou {itens[escolha]} e o computador {itens[comp]}! ===')
-    print(f'{" VOCÊ GANHOU!!! ":*^40}')
+    def fazer_contagem_regressiva(self):
+        '''Mostra timer para criar expectativa sobre resultado.'''
+        sleep(0.5)
+        print('\n*JO*')
+        sleep(0.5)
+        print('*KEM*')
+        sleep(0.5)
+        print('*PÔ!!!*\n')
 
-# Obs: para que as strings "PEDRA", "PAPEL" e "TESOURA" aparecessem no lugar dos números nos prints,
-# foi colocado o seguinte:
-# itens[escolha]: "exiba os itens de acordo com a escolha/comp apresentados".
-# Ou seja, por exemplo, se o computador escolhesse aleatoriamente o número 1,
-# seria exibido o item na posição 1 da énople pré-determinada (itens), no caso, "PAPEL".
+jokenpo = JoKenPo()
+jokenpo.iniciar()
