@@ -1,30 +1,34 @@
 # Faça um programa que leia um número qualquer e mostre o seu fatorial.
 # Ex: 5! = 5 x 4 x 3 x 2 x 1 = 120
-# A forma abaixo seria a usada em Python, porém há linguagens que não têm essa funcionalidade.
 
-'''from math import factorial
-n = int(input('Digite um número: '))
-f = factorial(n)
-print(f'O fatorial de {n} é {f}.')'''
-print()
-n = int(input('Digite um número para calcular seu fatorial: '))
-contador = n  # O contador começa com o número a ser calculado. Por exemplo, fatorial de 5 começa a contagem no 5.
-fatorial = 1  # Como serão multiplicações seguidas, a variável não pode começar em "0", senão não avançará.
-print(f'Calculando {contador}! = ', end='')
-while contador > 0:
-    print(f'{contador}', end='')
-    print(' x ' if contador > 1 else ' = ', end='')  # Colocar um "x" entre os números maiores que 1.
-    fatorial = fatorial * contador
-    contador -= 1
-print(f'{fatorial}')
+class CalculadoraFatorial():
 
-# Conforme pedido em aula, abaixo utilizando "for" (já que há como saber a quantidade de repetições do laço).
-print('-=' * 40)
-num = int(input('Digite o número para cálculo de fatorial: '))
-fat = 1
-print(f'Calculando {num}! = ', end='')
-for cont in range(num, 0, -1):
-    print(cont, end='')
-    print(' x ' if cont > 1 else ' = ', end='')
-    fat *= cont
-print(fat)
+    def __init__(self):
+        self.numeros = []
+        self.resultado = ''
+
+    def iniciar(self):
+        print('*** Cálculo de fatorial ***\nIndique o número: ')
+        n = int(input())
+        self.calcular_fatorial(n)
+        self.exibir_resultado()
+
+    def calcular_fatorial(self, n):
+        '''Cálculo de fatorial em "n" vezes.'''
+        fatorial = 1  # Deve começar em "1", pois se for "0" o resultado será "0".
+        for i in range(n, 0, -1):
+            fatorial *= i
+            self.numeros.append(i)
+        self.resultado = fatorial
+        return self.resultado
+
+    def exibir_resultado(self):
+        '''Exibir os resultados calculados.'''
+        print(str(self.numeros[0]) + '! = ', end='')
+        for c in self.numeros:
+            print(c, 'x ' if c != 1 else '= ', end='')
+        print(self.resultado)
+        
+
+calculadora = CalculadoraFatorial()
+calculadora.iniciar()
