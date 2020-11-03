@@ -1,14 +1,25 @@
 # Faça um programa que mostre na tela uma contagem regressiva para o estouro de fogos de artifício, indo de 10 até 0,
 # com uma pausa de 1 segundo entre eles.
-print()
-print(f'{" CONTAGEM REGRESSIVA! ":*^40}')
-print()
 from time import sleep
-from emoji import emojize
 
-for c in range(10, 0, -1):
-    print(c)
-    sleep(1)
-print('0')
-print()
-print(emojize(f'\033[1;33m{(":smile: ") * 3}\033[m {" FELIZ 2021!! ":*^40} \033[1;33m{(":smile: ") * 3}\033[m', use_aliases=True))
+class ContagemRegressiva():
+    fogos = '*** FELIZ ANO NOVO!!!! ***'
+
+    def __init__(self):
+        pass
+
+    def iniciar(self):
+        '''Menu principal.'''
+        print(f'{" CONTAGEM REGRESSIVA ":=^40}')
+        self.contar_tempo()
+        print(contagem.fogos)
+        
+    def contar_tempo(self):
+        '''Contagem regressiva de 10 segundos'''
+        for i in range(10, 0, -1):
+            print(i)
+            sleep(1)
+            
+
+contagem = ContagemRegressiva()
+contagem.iniciar()
