@@ -1,14 +1,19 @@
-print()
-print('* Programa que leia número real e mostre sua porção inteira *')
-print()
+# Quebrando um Número:
+# Descrição: Crie um programa que leia um número Real qualquer pelo teclado e mostre
+# na tela a sua porção inteira.
 
-import math
-num = float(input('Digite um valor: '))
-print(f'O valor digitado foi {num} e sua porção inteira é {math.trunc(num)}.')
-#Opção 2 usando "from math import trunc".
-from math import trunc
-print(f'O valor digitado foi {num} e sua porção inteira é {trunc(num)}.')
-#Opção 3 para fazer o mesmo cálculo abaixo:
-print(f'O valor digitado foi {num} e sua porção inteira é {int(num)}.')
+def separar_inteiro_de_real():
+    '''Recebe um número flutuante ou inteiro, e mostra a parte inteira.'''
+    print(f'{" SEPARADOR DE PARTE INTEIRA DE NÚMERO REAL ":*^53}')
+    print('Digite um número inteiro ou inteiro com decimais:')
+    try:
+        n = float(input())
+    except ValueError:
+        print("Somente números são aceitos. Tente novamente.")
+    else:
+        print(f'\nO número digitado foi {n} e {int(n)} é a parte inteira do número.\n')
+    finally:
+        print('Tenha um bom dia!')
 
 
+separar_inteiro_de_real()
