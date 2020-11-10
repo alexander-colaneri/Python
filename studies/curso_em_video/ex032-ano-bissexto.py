@@ -1,14 +1,23 @@
-# Ano bissexto
-# Digite um ano e veja se é bissexto.
-print()
-ano = int(input('Digite o ano ou 0 para o ano atual: '))
-# Um ano bissexto ocorre a cada 4 anos, porém há mais regras: se o ano for múltiplo de 100 e não múltiplo de 400,
-# ele não é bissexto. Ou seja: SE ano % 4 for 0(zero) E ano % 100 diferente de 0(zero) o ano será bissexto.
-# CASO CONTRÁRIO ano % 400 deve ser 0 para que o ano seja bissexto.
+# Descrição: Faça um programa que leia um ano qualquer e mostre se ele é bissexto.
 from datetime import date
-if ano == 0:
-    ano = date.today().year
-if ano % 4 == 0 and ano % 100 != 0 or ano % 400 == 0:
-    print(f'O ano {ano} é bissexto!')
-else:
-    print(f'O ano {ano} não é bissexto!')
+
+def calcular_ano_bissexto():
+    '''Indicar se o ano inserido é bissexto ou não.'''
+    print(f'{" INDICADOR DE ANO BISSEXTO ":*^37}')
+    print('Digite o ano a ser analisado ou "0" para o ano atual:')
+    try:
+        ano = int(input())
+    except ValueError:
+        print('Digite o número do ano. Não utilize letras ou espaços. O programa precisa ser reiniciado.')
+    else:
+        if ano == 0:
+            ano = date.today().year
+        if ano % 4 == 0 and ano % 100 != 0 or ano % 400 == 0:
+            print(f'O ano {ano} é bissexto!')
+        else:
+            print(f'O ano {ano} não é bissexto!')
+    finally:
+        print('Tenha um bom dia!')
+        
+
+calcular_ano_bissexto()
