@@ -13,17 +13,23 @@ class ConversorTemperatura():
         self.receber_graus_celsius()
         self.converter_temperatura()
         self.exibir_resultado()
+        return None
 
     def receber_graus_celsius(self):
         '''Recebe o valor digitado pelo usuário.'''
         print('Digite a temperatura em graus Celsius:')
-        self.celsius = float(input())
-        return self.celsius
+        while True:
+            try:
+                self.celsius = float(input())
+                break
+            except ValueError:
+                print('Digite o valor em números, sem espaços.')
+        return None
 
     def converter_temperatura(self):
         '''Converte o valor digitado de graus Celsius para graus Fahrenheit.'''
         self.fahrenheit = self.celsius * 9 / 5 + 32
-        return self.fahrenheit
+        return None
 
     def exibir_resultado(self):
         '''Exibe o valor convertido em graus Fahrenheit.'''
