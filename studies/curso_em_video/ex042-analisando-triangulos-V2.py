@@ -10,7 +10,7 @@ class ClassificadorDeTriangulos():
         self.valores_lados = []
 
     def iniciar(self):
-        '''Menu principal.'''
+        '''Área principal.'''
         print(f'{"CLASSIFICADOR DE TRIÂNGULOS":*^40}\n')
         self.receber_valores()
         if self.analisar_valores():
@@ -25,6 +25,7 @@ class ClassificadorDeTriangulos():
         for i in range(1, 4):
             print(f'Digite o valor do lado {i}:')
             self.valores_lados.append(int(input()))
+            return None
 
     def analisar_valores(self):
         '''Analisa se é possível formar um triângulo com os valores dados.'''
