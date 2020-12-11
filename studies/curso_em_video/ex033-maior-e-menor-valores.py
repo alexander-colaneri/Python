@@ -1,31 +1,46 @@
-# Faça um programa que peça 3 números e indique qual é o maior e qual é o menor.
-print()
-print('* Digite 3 números abaixo *')
-a = int(input('Digite o primeiro número: '))
-b = int(input('Digite o segundo número: '))
-c = int(input('Digite o terceiro número: '))
-# Dica: já pré-determine, etiquete, um número como o menor.
-# Abaixo, fazer a verificação de qual é o menor.
-# menor = a
-if b < a and b < c:
-    menor = b
-if c < a and c < b:
-    menor = c
-if a < c and a < b:
-    menor = a
-# Agora, a verificação de qual é o maior.
-# maior = a
-if b > a and c > a:
-    maior = b
-if c > a and c > b:
-    maior = c
-if a > c and a > b:
-    maior = a
-print()
+# Nº 33 - Maior e Menor Valores
+# Descrição: Faça um programa que leia três números e mostre qual é o maior e qual
+# é o menor.
 
-# Criei referências dos códigos de cor, para testar, conforme abaixo:
+class MaiorMenorNumero():
+    '''Entre três números indicados pelo usuário, exibe o maior e o menor.'''
 
-red = '\033[;31m'
-green = '\033[;32m'
+    def __init__(self):
+        self.maior = 0
+        self.menor = 0
+        self.lista_de_numeros = []
 
-print(f'O menor número é {red}{menor}\033[m e o maior número é {green}{maior}\033[m.')
+    def iniciar(self):
+        '''Inicia o programa e exibe mensagens de boas vindas e despedida.'''
+        print(f'{" INDICADOR DE MAIOR E MENOR NÚMEROS ":*^60}')
+        self.recebe_numeros()
+        self.classifica_numeros()
+        self.exibe_numeros()
+        print('\nTenha um bom dia!')
+
+    def recebe_numeros(self):
+        '''Recebe os 3 números que farão parte da análise.'''
+        for c in range (1, 4):
+            print(f'Digite o {c}º número:')
+            while True:
+                try:
+                    self.lista_de_numeros.append(int(input()))
+                    break
+                except ValueError:
+                    print('Digite números inteiros apenas, sem espaços.')
+        return None
+
+    def classifica_numeros(self):
+        '''Separa o maior e o menor número da lista.'''
+        self.maior = max(self.lista_de_numeros)
+        self.menor = min(self.lista_de_numeros)
+        return None
+
+    def exibe_numeros(self):
+        '''Exibe o maior e o menor número.'''
+        print('=' * 50)
+        print(f'O maior número é {self.maior} e o menor é {self.menor}.')
+
+        
+maiormenor = MaiorMenorNumero()
+maiormenor.iniciar()
